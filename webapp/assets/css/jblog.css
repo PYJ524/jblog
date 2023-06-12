@@ -1,0 +1,218 @@
+@charset "UTF-8";
+/****************************************************************/
+/* 초기화 공통 ***************************************************/
+/****************************************************************/
+
+/* 여백 초기화 */
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, 
+input, fieldset, legend, p, select, table, th, td, tr,
+textarea, button, form {margin: 0; padding: 0;}
+
+body	{font:15px "맑은 고딕", 돋움, 굴림; text-align:center; }
+ul, ol	{list-style-type: none; }
+a:link {text-decoration: none; color: #000000; }
+a:visited {text-decoration: none; color: #000000; }
+a:active {text-decoration: none; color: #000000; }
+a:hover {text-decoration: none; color: #000000; }
+
+
+/* 버튼 공통*/
+.btn_s {
+	border: 1px solid #808080; 
+	background-color: #DDDDDD; 
+	border-radius: 5px;
+	padding: 2px 8px 2px 8px;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.btn_l {
+	border: 1px solid #808080; 
+	background-color: #DDDDDD; 
+	border-radius: 5px;
+	padding: 12px 15px 12px 15px;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.btn {
+	width: 100%;
+	border: 1px solid #808080; 
+	background-color: #DDDDDD; 
+	border-radius: 5px;
+	padding: 12px 15px 12px 15px;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+/* 탭 버튼 */
+.tabbtn {
+	border: 1px solid #808080; 
+	background-color: #ffffff; 
+	border-radius: 8px 8px 0px 0px;
+	font-size: 13px;
+}
+.selected {background-color: #DDDDDD; }
+
+
+/* 위치 */
+.float-r {float: right; }
+.float-l {float: left; }
+.clear{clear: both; }
+
+/* 정렬 */
+.text-right {text-align: right;}
+.text-left {text-align: left;}
+.text-center {text-align: center;}
+
+
+/* clearfix */
+.clearfix{*zoom:1;}
+.clearfix:before, .clearfix:after {display: block; content: '';line-height: 0;}
+.clearfix:after {clear: both;}
+
+
+/**************************************************************************/
+/* 메인사이트 *************************************************************/
+/**************************************************************************/
+/* 레이아웃 */
+#center-content					{margin: 0px auto; width: 1000px; background-color: #FFFFFF; }
+
+
+/* 메인-해더 */
+#center-content .logo			{width: 163px; height: 104px; margin: 50px auto 0px auto; }
+#center-content .menu			{width: 160px; height: 20px; margin: 0 auto 50px auto;; text-align:center; }
+#center-content .menu li		{width: 80px;margin: 0px 0px 0px 0px ; float: left; }
+
+
+/* 메인-푸터 */
+#center-content #footer {height: 40px; padding:0px 10px 0px 10px; background:#F0F0F0; bottom:0;}
+#center-content #footer ul {display: flex; justify-content: center; align-items: center; height: 100%; margin: 0; padding: 0;}
+#center-content #footer li {margin-right: 20px; padding: 10px; float: left; font-size: 13px;  line-height:20px; display: flex; align-items: center;}
+div#footer		{ color:#666 }
+
+
+/* 메인-검색창 */
+#center-content #search-form input[name='keyword'] 			{width: 400px; border:2px solid #254EDB; vertical-align:top; padding:11px; font-size:18px; }
+#center-content #search-form input[name='keyword']:focus	{outline:none;}
+#center-content #search-form #btnSearch 					{border:2px solid #254EDB; 
+															 margin-left:-7px; 
+															 padding:9px; 
+															 font-size: 18px; 
+															 background-color: #254EDB; 
+															 color: #ffffff;}
+#center-content #search-form fieldset				{ margin:10px 0 10px 0px;}
+#center-content #search-form input[type='radio']	{ margin-right:20px; }
+
+
+/* 메인-검색결과 리스트 */
+#center-content #resultList {min-height: 500px;}
+
+
+/**************************************************************************/
+/* 메인-회원가입_로그인 ***************************************************/
+/**************************************************************************/
+/* 공통 */
+#center-content td {padding-top:10px; text-align:left;}
+#center-content #btnArea {margin:30px 0px 0px 0px; padding: 10px;  border-top: 1px solid #808080;}
+
+
+/* 회원가입 */
+#center-content #joinForm {width: 400px; margin: 0px auto; padding: 20px; border: 1px solid #B7B7B7; }
+#center-content #joinForm #txtId {width: 160px; height: 30px; }
+#center-content #joinForm #btnIdCheck {width: 100px; height: 32px; }
+#center-content #joinForm #tdMsg {padding-top: 0px; }
+#center-content #joinForm #txtPassword {width: 160px; height: 30px; }
+#center-content #joinForm #txtUserName {width: 160px; height: 30px; }
+#center-content #joinForm #chkAgree {width: 15px; height: 15px; }
+
+/* 회원가입 성공 */
+
+/* 로그인 */
+#center-content #loginForm										{ width:300px; margin: 0px auto; padding: 20px; border: 1px solid #B7B7B7; }
+#center-content #loginForm #textId {width: 160px; height: 30px; }
+#center-content #loginForm #textPassword {width: 160px; height: 30px; }
+#center-content #loginForm #tdMsg {padding-top: 20px; text-align: center; }
+
+
+
+/****************************************************************/
+/* 개인블로그 ***************************************************/
+/****************************************************************/
+
+/* 개인블로그 레이아웃 */
+#wrap 								{width: 1000px; margin: 0px auto;}
+#wrap #header 						{height: 90px; margin: 0px 0px 10px 0px; padding: 30px 10px 10px 10px;  background-color: #26AA46;}
+
+#wrap #content						{margin: 0px 0px 30px 0px; background-color: #ffffff; }
+#wrap #content #profilecate_area	{width: 190px; float:left; margin: 0px 10px 0px 0px; background-color: #ffffff; }
+#wrap #content #post_area			{width: 790px; float:right; background-color: #ffffff; }
+
+#wrap #footer						{height: 40px; line-height:40px; background:#F0F0F0; font-size: 13px;}
+
+
+/* 개인블로그 해더 */
+#header 		{height: 90px; padding: 30px 10px 10px 10px;}
+#header h1		{margin: 0px 0px 0px 0px;}
+#header h1>a 	{text-align:center; font-size: 35px; color:#ffffff }
+#header ul		{float: right; margin: 18px 0px 0px 0px;}
+#header ul>li	{float: left; margin: 0px 0px 0px 10px;}
+
+/* 개인블로그 왼쪽영역(프로필) */
+#profilecate_area #profile			{margin: 0px 0px 5px 0px; padding: 4px; border: 1px solid #808080;}
+#profilecate_area #profile #proImg  {width: 180px; margin: 0px 0px 0px 0px;}
+#profilecate_area #profile #nick  	{width: 180px; margin: 0px 0px 5px 0px; font-size:13px; font-weight:bold;}
+
+
+/* 개인블로그 왼쪽영역(카테고리) */
+#profilecate_area #cate					{padding: 10px 5px 15px 5px; border: 1px solid #808080;}
+#profilecate_area #cateList>li			{margin: 4px 0px 3px 0px; padding: 0px 5px 0px 10px;}
+#profilecate_area #cateList>li:before	{content:"+ ";}
+#profilecate_area #cateList>li:hover	{font-weight: bold;}
+
+
+/* 개인블로그 오른쪽영역(글post) */
+#post_area  						{padding: 0px 10px 0px 0px;}
+#post_area #postBox			 		{padding: 0px 0px 5px 0px; border-bottom: 1px solid #808080;}
+#post_area #postBox #postTitle 		{width: 790px; float: left; padding: 5px 0px 0px 0px; font-size: 22px;}
+#post_area #postBox #postDate		{width: 100px; float: right; width: 148px; text-align: right;}
+#post_area #postBox #postNick		{width: 100px; float: left; width: 150px; text-align: left;}
+#post_area #post					{padding: 20px 10px 20px 10px; border-bottom: 3px solid #808080; text-align: left;}
+
+
+
+/* 개인블로그 오른쪽영역(글리스트) */
+#post_area {}
+#post_area #list #listTitle {width: 100%; margin: 50px 0px 5px 0px; padding: 0px 5px 3px 5px; border-bottom: 1px solid #808080; }
+#post_area #list table {width: 100%; border-collapse: collapse; font-size: 13px;}
+#post_area #list table tr {border-bottom: 1px solid #B7B7B7; }
+#post_area #list table td {padding: 6px 5px 6px 5px; }
+
+
+/****************************************************************/
+/* 개인블로그 어드민 ***************************************************/
+/****************************************************************/
+/* 공통 */
+#admin-content {margin: -1px 0px 0px 0px; padding: 20px 20px 20px 20px; border: 1px solid #808080;}
+#admin-content td {padding-top:20px; text-align:left;}
+#admin-content #btnArea {margin:30px 0px 0px 0px; padding: 10px;  border-top: 1px solid #808080;}
+
+
+/* 기본설정 */
+#admin-menu li {width: 100px; float: left; margin: 0px -1px 0px 0px; padding: 10px 10px 10px 10px;  font-size: 15px; }
+#admin-content #admin-basic [type='text'] {width: 600px; height: 30px; }
+#admin-content #admin-basic img {width:180px; }
+
+/* 카테고리 */
+#admin-content #admin-cate-list {width: 100%; border-collapse: collapse; font-size: 15px;}
+#admin-content #admin-cate-list th {padding: 5px 5px 5px 5px; border: 1px solid #B7B7B7;  background-color: #DDDDDD;}
+#admin-content #admin-cate-list td {padding: 5px 5px 5px 5px; border: 1px solid #B7B7B7;  }
+
+#admin-content #admin-cate-add {width: 100%; border-collapse: collapse; font-size: 15px;}
+#admin-content #admin-cate-add [type='text'] {width: 600px; height: 30px; }
+
+/* 글작성 */
+#admin-content #admin-write [type='text'] {width: 450px; height: 30px; }
+#admin-content #admin-write select[name='cateNo'] {width: 150px; height: 35px; }
+#admin-content #admin-write textarea {width: 600px; height: 300px;}
+
