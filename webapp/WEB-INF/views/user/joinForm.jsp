@@ -101,7 +101,7 @@
 		<br><br>
 		
 		<div>		
-			<form id="joinForm" method="post" action="${pageContext.request.contextPath}/user/join">
+			<form id="joinForm" method="post" action="${pageContext.request.contextPath}/user/join?fileName=spring-logo.jpg">
 				<table>
 			      	<colgroup>
 						<col style="width: 100px;">

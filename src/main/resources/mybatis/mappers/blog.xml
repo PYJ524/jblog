@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="blog">
+
+	<!-- 쿼리문 작성 -->
+	<insert id="insert" parameterType="com.javaex.vo.BlogVo">
+		<![CDATA[
+			insert into 
+			blog values(
+			    #{id},
+			    #{blogTitle},
+			    #{logoFile}
+			)
+		]]>
+	</insert>
+	
+	<select id="listOne" resultType="com.javaex.vo.BlogVo" parameterType="String">
+		<![CDATA[
+			select id
+				 , blogtitle
+				 , logofile
+			from blog
+			where id = #{id}
+		]]>
+	</select>
+	
+	<update id="update" parameterType="com.javaex.vo.BlogVo">
+
+		<![CDATA[
+			update blog 
+			set blogtitle = #{blogTitle}
+			]]>	
+			<if test='logoFile != "" and logoFile != null' >
+			  , logofile = #{logoFile} 
+			</if>
+		<![CDATA[
+		    where id = #{id}
+   		]]>
+		
+	</update>
+</mapper>

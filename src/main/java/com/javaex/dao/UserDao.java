@@ -29,4 +29,11 @@ public class UserDao {
 		UserVo userVo = sqlSession.selectOne("user.userList", vo);
 		return userVo; 
 	}
+	
+	public UserVo listOne(String id) {
+		System.out.println("UserDao.listOne()");
+		System.out.println(id);
+		UserVo userVo = sqlSession.selectOne("user.listOne", id);
+		return userVo;
+	}
 }

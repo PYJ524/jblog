@@ -21,7 +21,7 @@
 	
 		<c:if test="${sessionScope.uInfo != null}">
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a> &nbsp; &nbsp; <a href="${pageContext.request.contextPath}/">내블로그</a></li>
+				<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a> &nbsp; &nbsp; <a href="${pageContext.request.contextPath}/${sessionScope.uInfo.id}" target="_blank">내블로그</a></li>
 			</ul>
 		</c:if>
 	</div>

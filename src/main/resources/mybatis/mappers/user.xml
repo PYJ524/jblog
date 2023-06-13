@@ -35,4 +35,13 @@
 		]]>
 	</select>
 	
+	<select id="listOne" parameterType="String" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select id
+				 , userName
+			from users
+			where id = #{id}
+		]]>
+	</select>
+	
 </mapper>
