@@ -78,5 +78,5 @@ public class BlogService {
 		blogDao.update(vo);
  
 	}
-	String saveDir = "C:/Yoojun_Spring/upload2";
+	String saveDir = "D:/Spring_pyj/upload";
 }

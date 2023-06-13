@@ -52,16 +52,7 @@
 							<td>7</td>
 							<td>자바기초와 객체지향</td>
 						    <td class='text-center'>
-						    	<img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg">
-						    </td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>오라클</td>
-							<td>5</td>
-							<td>오라클 설치와 sql문</td>
-						    <td class='text-center'>
-						    	<img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg">
+						    	<a href= ""><img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a>
 						    </td>
 						</tr>
 						<!-- 리스트 영역 -->
