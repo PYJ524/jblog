@@ -7,7 +7,10 @@
 <meta charset="UTF-8">
 <title>JBlog</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
-
+<!-- jquery -->	
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<!-- 부트스트랩 -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
 </head>
 
@@ -23,6 +26,7 @@
 				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/${sessionScope.uInfo.id}/admin/category">카테고리</a></li>
 				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${sessionScope.uInfo.id}/admin/writeForm">글작성</a></li>
 			</ul>
+			
 			<!-- //admin-menu -->
 			
 			<div id="admin-content">
@@ -46,15 +50,17 @@
 		      		</thead>
 		      		<tbody id="cateList">
 		      			<!-- 리스트 영역 -->
-		      			<tr>
-							<td>1</td>
-							<td>자바프로그래밍</td>
-							<td>7</td>
-							<td>자바기초와 객체지향</td>
-						    <td class='text-center'>
-						    	<a href= ""><img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a>
-						    </td>
-						</tr>
+	      				<c:forEach items="${cateList}" var="cateVo">
+		      				<tr>
+								<td>${cateVo.cateNo}</td>
+								<td>${cateVo.cateName}</td>
+								<td>${cateVo.postCount}</td>
+								<td>${cateVo.description}</td>
+							    <td class='text-center'>
+							    	<a href=""><img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a>
+							    </td>
+							</tr>
+					    </c:forEach>
 						<!-- 리스트 영역 -->
 					</tbody>
 				</table>
@@ -70,9 +76,9 @@
 		      		</tr>
 		      		<tr>
 		      			<td class="t">설명</td>
-		      			<td><input type="text" name="desc"></td>
+		      			<td><input type="text" name="desc"><input type="hidden" name="id" value="${sessionScope.uInfo.id}"></td>
 		      		</tr>
-		      	</table> 
+		      	</table>
 			
 				<div id="btnArea">
 		      		<button id="btnAddCate" class="btn_l" type="submit" >카테고리추가</button>
@@ -93,6 +99,82 @@
 </body>
 
 
+<script type="text/javascript">
+$("#btnAddCate").on("click",function(){
+	console.log("클릭");
+	var id = $("[name = id]").val();
+	var cateName = $("[name = name]").val();
+	var description = $("[name = desc]").val();
+	
+	var CategoryVo = {
+		id : id,
+		cateName: cateName,
+		description: description
+	};
+	console.log(CategoryVo);
+	
+	var str = JSON.stringify(CategoryVo);
+
+	console.log(str);
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath}/category/add",
+		type : "post",
+		contentType : "application/json",
+		data : str,
+				
+		// 데이터 받은 후 
+		dataType : "json",
+		success : function(jsonResult){
+			console.log("들어왔니?");
+			console.log(jsonResult);
+			// 성공시 ㅊㅓㄹㅣㅎㅐㅇㅑ할 코드
+			
+			if(jsonResult.result == "success"){
+				console.log(jsonResult.data);
+				
+				// 정상 처리
+				render(jsonResult.data, "up");	// 리스트에 추가
+				
+				//등록폼 비우기
+				$("[name = 'name' ]").val("");
+				$("[name = 'desc' ]").val("");
+				
+			}else{
+				// 오류 처리
+				
+			} 
+		},
+		error : function(XHR, status, error){
+			// 실패
+		}
+	}); 
+});
+
+// 카테고리 리스트 그리기
+function render (CategoryVo, dir){
+	var str = "";
+	str += '<tr>';
+	str += '	<td>'+ CategoryVo.cateNo +'</td>';
+	str += '	<td>'+ CategoryVo.cateName +'</td>';
+	str += '	<td>'+ CategoryVo.postCount+'</td>'; 
+	str += '	<td>'+ CategoryVo.description+'</td>'; 
+	str += '	<td class="text-center">';
+	str += '		<a href=""><img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a>';
+	str += '	</td>';
+	str += '</tr>';
+
+	
+	if(dir == 'up'){
+		$("#cateList").prepend(str);
+	/* }else if(dir == 'down'){
+		$("#cateList").append(str);
+	}else{
+		console.log("에러요");  */
+	} 
+}
+
+</script>
 
 
 </html>

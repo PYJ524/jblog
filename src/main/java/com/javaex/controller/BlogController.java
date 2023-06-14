@@ -34,16 +34,6 @@ public class BlogController {
 		
 		return "blog/admin/blog-admin-basic";
 	}
-
-
-	
-	@RequestMapping(value="/{id}/admin/writeForm")
-	public String write(@PathVariable("id") String id, Model model) {
-		model.addAttribute("uOneList",blogService.userOne(id));
-		model.addAttribute("bOneList",blogService.blogOne(id));
-		
-		return "blog/admin/blog-admin-write";
-	}
 	
 	@RequestMapping(value="/blogUpdate")
 	public String modify(@RequestParam("file") MultipartFile file

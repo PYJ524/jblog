@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cate">
+
+	<select id="getList" parameterType="String" resultType="com.javaex.vo.CategoryVo">
+		<![CDATA[
+			select cateno
+			     , cateName 
+			     , (select count(*)
+			       from post
+			       where post.cateNo = category.cateNo) as postCount
+			     , description
+			from category
+			where id = #{id}
+			order by cateno desc
+		]]>
+	</select>
+	
+	<select id="checkId" parameterType="int" resultType="String">
+		<![CDATA[
+			select id
+			from category
+			where cateNo = #{cateNo}
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="com.javaex.vo.CategoryVo">
+	<selectKey keyProperty="cateNo" resultType="int" order="BEFORE">	
+			select seq_category_no.nextval from dual
+	</selectKey>
+		<![CDATA[
+			insert into 
+			category values(
+				#{cateNo}
+			  , #{id}
+			  , #{cateName}
+			  , #{description}
+			  , sysdate
+	        )
+		]]>
+	</insert>
+	<select id="ajaxList" parameterType="int" resultType="com.javaex.vo.CategoryVo">
+		<![CDATA[
+			select cateNo
+				 , id
+				 , cateName
+				 , description
+				 , regDate
+			from category
+			where cateNo = #{cateNo}
+		]]>
+	
+	</select>
+
+
+</mapper>
