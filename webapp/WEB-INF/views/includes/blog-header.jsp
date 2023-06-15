@@ -3,7 +3,7 @@
 
 
 		<div id="header" class="clearfix">
-			<h1><a href="">${bOneList.blogTitle}</a></h1>
+			<h1><a href="${pageContext.request.contextPath}/${bOneList.id}">${bOneList.blogTitle}</a></h1>
 			<ul class="clearfix">
 				<!-- 로그인 전 메뉴 -->
 				<c:if test="${sessionScope.uInfo == null}">

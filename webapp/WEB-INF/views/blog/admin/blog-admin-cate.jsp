@@ -52,12 +52,12 @@
 		      			<!-- 리스트 영역 -->
 	      				<c:forEach items="${cateList}" var="cateVo">
 		      				<tr>
-								<td>${cateVo.cateNo}</td>
+								<td id="c-${cateVo.cateNo}">${cateVo.cateNo}</td>
 								<td>${cateVo.cateName}</td>
 								<td>${cateVo.postCount}</td>
 								<td>${cateVo.description}</td>
 							    <td class='text-center'>
-							    	<a href=""><img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a>
+							    	<a href="" class="delete"><img class="btnCateDel" data-del="${cateVo.cateNo}" data-cnt="${cateVo.postCount}" src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a>
 							    </td>
 							</tr>
 					    </c:forEach>
@@ -100,6 +100,45 @@
 
 
 <script type="text/javascript">
+//삭제 버튼
+
+$("#cateList").on("click", ".btnCateDel", function(){
+	console.log("삭제버튼 클릭");
+	
+	var cateNo = $(this).data("del");
+	var postCount = $(this).data("cnt");
+	var categoryVo = {
+		cateNo : cateNo,
+		postCount : postCount
+	}
+	
+	// 삭제 작업 수행
+/* 	var cateNo = $deleteButton.closest("tr").find("td[id^='c-']").attr("id").split("-")[1];
+    console.log(cateNo);
+ */    
+    $.ajax({
+		url : "${pageContext.request.contextPath}/category/delete",
+		type : "post",
+		// contentType : "application/json",
+		data : categoryVo,
+				
+		// 데이터 받은 후 
+		dataType : "json",
+		success : function(jsonResult){
+			console.log(jsonResult);
+			// 성공시 ㅊㅓㄹㅣㅎㅐㅇㅑ할 코드
+			if(jsonResult > 0 ){
+				console.log($("#c-"+categoryVo.cateNo).remove());
+			}else{
+				alert("삭제실패 ㅋ ㅋ")
+			}
+		},
+		error : function(XHR, status, error){
+			// 실패
+		}
+	});
+});
+
 $("#btnAddCate").on("click",function(){
 	console.log("클릭");
 	var id = $("[name = id]").val();
@@ -155,7 +194,7 @@ $("#btnAddCate").on("click",function(){
 function render (CategoryVo, dir){
 	var str = "";
 	str += '<tr>';
-	str += '	<td>'+ CategoryVo.cateNo +'</td>';
+	str += '	<td id="c-'+CategoryVo.cateNo+'">'+ CategoryVo.cateNo +'</td>';
 	str += '	<td>'+ CategoryVo.cateName +'</td>';
 	str += '	<td>'+ CategoryVo.postCount+'</td>'; 
 	str += '	<td>'+ CategoryVo.description+'</td>'; 

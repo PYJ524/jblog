@@ -22,4 +22,16 @@ public class CategoryService {
 	public List<CategoryVo> getList(String id){
 		return cateDao.getList(id);
 	}
+	
+	public int LastCateNo(String id) {
+		return cateDao.LastCateNo(id);
+	}
+	
+	public int delete(CategoryVo cateVo) {
+		if(cateVo.getPostCount() == 0) {
+			return cateDao.delete(cateVo);
+		}else {
+			return 0;
+		}
+	}
 }

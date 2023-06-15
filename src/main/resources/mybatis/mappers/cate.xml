@@ -17,6 +17,18 @@
 		]]>
 	</select>
 	
+	<select id="lastCateNo" parameterType="String" resultType="int">
+		<![CDATA[
+			select cateNo
+			from category
+			where id = #{id}
+			order by cateNo desc
+			fetch first row only
+		]]>
+		
+	
+	</select>
+	
 	<select id="checkId" parameterType="int" resultType="String">
 		<![CDATA[
 			select id
@@ -52,6 +64,14 @@
 		]]>
 	
 	</select>
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete 
+			from category 
+			where cateno = #{cateNo}	
+		]]>
+	</delete>
 
 
 </mapper>

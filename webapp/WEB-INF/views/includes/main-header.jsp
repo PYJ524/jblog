@@ -5,7 +5,9 @@
 <body>
 	<div id="header">
 		<h1>
-			<a href="${pageContext.request.contextPath}/"><img class="logo" src="${pageContext.request.contextPath}/assets/images/logo.jpg"></a>
+			<a href="${pageContext.request.contextPath}/">
+				<img class="logo" src="${pageContext.request.contextPath}/assets/images/logo.jpg">
+			</a>
 		</h1>
 	</div>
 	<br><br><br>
@@ -21,7 +23,10 @@
 	
 		<c:if test="${sessionScope.uInfo != null}">
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a> &nbsp; &nbsp; <a href="${pageContext.request.contextPath}/${sessionScope.uInfo.id}" target="_blank">내블로그</a></li>
+				<li>
+					<a href="${pageContext.request.contextPath}/user/logout">로그아웃</a> &nbsp; &nbsp; 
+					<a href="${pageContext.request.contextPath}/${sessionScope.uInfo.id}" target="_blank">내블로그</a>
+				</li>
 			</ul>
 		</c:if>
 	</div>

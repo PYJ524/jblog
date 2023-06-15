@@ -31,8 +31,19 @@ public class CategoryDao {
 		return sqlSession.selectList("cate.getList", id);
 	}
 	
+	public int LastCateNo(String id) {
+		System.out.println("CategoryDao.LastCateNo");
+		return sqlSession.selectOne("cate.lastCateNo", id);
+	}
+	
 	public String checkid(PostVo postVo) {
 		System.out.println(postVo);
 		return sqlSession.selectOne("cate.checkId", postVo.getCateNo());
 	};
+	
+	public int delete(CategoryVo cateVo) {
+		int result = sqlSession.delete("cate.delete", cateVo);
+		System.out.println();
+		return result;
+	}
 }

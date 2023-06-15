@@ -11,18 +11,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.BlogService;
+import com.javaex.service.CategoryService;
+import com.javaex.service.PostService;
 import com.javaex.vo.BlogVo;
+import com.javaex.vo.PostVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 public class BlogController {
 	
 	@Autowired
 	private BlogService blogService;
+
+	@Autowired
+	private CategoryService cateService;
+	
+	@Autowired
+	private PostService postService;
 	
 	@RequestMapping(value="/{id}")
 	public String blog(@PathVariable("id") String id, Model model) {
-		model.addAttribute("uOneList",blogService.userOne(id));
-		model.addAttribute("bOneList",blogService.blogOne(id));
+		System.out.println("BlogController.blog()");
+		model.addAttribute("uOneList", blogService.userOne(id));
+		model.addAttribute("bOneList", blogService.blogOne(id));
+		model.addAttribute("lastCateNo", cateService.LastCateNo(id));
+		model.addAttribute("lastPostVo", postService.LastPostVo(id));
 		
 		return "blog/blog-main";
 	}

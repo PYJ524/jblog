@@ -19,6 +19,9 @@ public class PostService {
 	@Autowired
 	private PostDao postDao;
 
+	public List<PostVo> list(int cateNo){
+		return postDao.getList(cateNo);
+	}
 	public List<CategoryVo> getList(String id) {
 		return cateDao.getList(id);
 	}
@@ -26,5 +29,9 @@ public class PostService {
 	public String write(PostVo postVo) {
 		postDao.insert(postVo);
 		return cateDao.checkid(postVo);
+	}
+	
+	public PostVo LastPostVo(String id) {
+		return postDao.lastlist(id);
 	}
 }
