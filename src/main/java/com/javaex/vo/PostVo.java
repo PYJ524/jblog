@@ -7,21 +7,26 @@ public class PostVo {
 	private String postTitle;
 	private String postContent;
 	private String regDate;
+	private String userName;
+	private String id;
 	
 	public PostVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public PostVo(int postNo, int cateNo, String postTitle, String postContent, String regDate) {
+
+	public PostVo(int postNo, int cateNo, String postTitle, String postContent, String regDate, String userName,
+			String id) {
 		super();
 		this.postNo = postNo;
 		this.cateNo = cateNo;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
 		this.regDate = regDate;
+		this.userName = userName;
+		this.id = id;
 	}
-	
+
 	public int getPostNo() {
 		return postNo;
 	}
@@ -62,12 +67,26 @@ public class PostVo {
 		this.regDate = regDate;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "PostVo [postNo=" + postNo + ", cateNo=" + cateNo + ", postTitle=" + postTitle + ", postContent="
-				+ postContent + ", regDate=" + regDate + "]";
+				+ postContent + ", regDate=" + regDate + ", userName=" + userName + ", id=" + id + "]";
 	}
-	
-	
-	
+
 }

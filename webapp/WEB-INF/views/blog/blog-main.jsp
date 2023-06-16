@@ -20,7 +20,6 @@
 				<div id="profile">
 					<input type="hidden" id="bListid" value="${bOneList.id}" >
 					<input type="hidden" id="lastCateNo" value="${lastCateNo}" >
-					<input type="hidden" id="lastPostVo" value="${lastPostVo}" >
 					
 					<!-- 기본이미지 -->
 					<img id="proImg" src="${pageContext.request.contextPath}/img/${bOneList.logoFile}">
@@ -36,43 +35,33 @@
 						<strong>카테고리</strong>
 					</div>
 					<ul id="cateList" class="text-left">
-						<%-- <c:forEach items="${cateList}" var="cateVo">
-							<li><a href="${pageContext.request.contextPath}/post/list?cateNo=${cateVo.cateNo}">${cateVo.cateName}</a></li>
-						</c:forEach> --%>
+					
+					
 					</ul>
 				</div>
 			</div>
 			<!-- profilecate_area -->
 			
 			<div id="post_area">
-				
-				<!-- <div id="postBox" class="clearfix">
-						<div id="postTitle" class="text-left"><strong>08.페이징</strong></div>
-						<div id="postDate" class="text-left"><strong>2020/07/23</strong></div>
-						<div id="postNick">정우성(hijava)님</div>
-				</div> -->
-				<!-- //postBox -->
-			
-				<!-- <div id="post" >
-				
-				</div> -->
 				<!-- //post -->
 				
 				<!-- 글이 없는 경우 -->
 				
-				<div id="postBox" class="clearfix">
+				<!-- <div id="postBox" class="clearfix">
 					<div id="postTitle" class="text-left"><strong>등록된 글이 없습니다.</strong></div>
 					<div id="postDate" class="text-left"><strong></strong></div>
 					<div id="postNick"></div>
 				</div>
 			    
 				<div id="post" >
-				</div>
+				</div> -->
 				
 				
 				<div id="list">
 					<div id="listTitle" class="text-left"><strong>카테고리의 글</strong></div>
+					<!-- 포스트리스트 -->
 					<table id = "postList">
+					
 					</table>
 				</div>
 				<!-- //list -->
@@ -97,8 +86,9 @@ $(document).ready(function() {
 		id : id
 	}
 	
+	// 카테고리 디폴트 리스트
 	$.ajax({
-		url : "${pageContext.request.contextPath }/category/list",
+		url : "${pageContext.request.contextPath}/category/list",
 		type : "post",
 		data : UserVo,
 		
@@ -116,26 +106,27 @@ $(document).ready(function() {
 	//좌측 카테고리 작성
 	function render(CateVo) {
 		var str = "";
-		str += ' <li id="categoryClick" data-click="'+CateVo.cateNo +'"> <a href="">'+ CateVo.cateName + '</a> </li> ';
+		str += ' <li class="cListC" data-click="'+CateVo.cateNo +'"> <a href="">'+ CateVo.cateName + '</a> </li> ';
 
 		$("#cateList").append(str);
 
 	}
-
+	
+	//카테고리 라스트넘버
 	var cateNo = $("#lastCateNo").val()
 	var cateVo = {
 		cateNo : cateNo
 	}
 
+	// 포스트 기본 리스트
 	$.ajax({
-		url : "${pageContext.request.contextPath }/post/list",
+		url : "${pageContext.request.contextPath}/post/list",
 		type : "post",
 		data : cateVo,
 		
-		
 		dataType : "json",
 		success : function(PostList) {
-			console.log(PostList.data[0]);
+			console.log(PostList);
 			for (var i = 0; i < PostList.data.length; i++) {
 				postRender(PostList.data[i]);
 			}
@@ -148,12 +139,51 @@ $(document).ready(function() {
 	function postRender(PostList) {
 		var str = "";
 		str += ' <tr> ';
-		str += ' 	<td class="text-left"><a href="">'+PostList.postTitle+'</a></td> '
+		str += ' 	<td class="text-left pListC" data-click="'+PostList.postoN+'"><a href="">'+PostList.postTitle+'</a></td> '
 		str += ' 	<td class="text-right" style="text-align: right;">'+PostList.regDate+'</td> '
 		str += ' </tr> '
 
 		$("#postList").append(str);
 	}
-});
+	
+	
+	// 기본 포스트 글
+	$.ajax({
+		url : "${pageContext.request.contextPath}/post/oneList",
+		type : "post",
+		data : UserVo,
+		
+		
+		dataType : "json",
+		success : function(PostVo) {
+			console.log(PostVo);
+			pLastRender(PostVo);
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+	function pLastRender(PostVo) {
+		var str = "";
+		
+		str += '<div id="postBox" class="clearfix">'
+		str += '	<div id="postTitle" class="text-left"><strong>'+PostVo.data.postNo+'.'+PostVo.data.postTitle+'</strong></div>'
+		str += '	<div id="postDate" class="text-left"><strong>'+PostVo.data.regDate+'</strong></div>'
+		str += '	<div id="postNick">'+ PostVo.data.userName +'('+PostVo.data.id+')님</div>'
+		str += '</div>'
+		<!-- //postBox -->
+		
+		str += '<div id="post"> '
+		str += PostVo.data.postContent
+		str += '</div>'
+		//////////////
+
+		$("#post_area").prepend(str);
+	}
+}); // 페이지 로딩시
+
+//
+$("")
 </script>
 </html>

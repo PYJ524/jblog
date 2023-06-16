@@ -19,15 +19,16 @@
 	
 	<select id = "list" parameterType="int" resultType="com.javaex.vo.PostVo">
 		<![CDATA[
-			select a.postTitle, a.regDate
+			select a.postNo, a.cateNo, a.postTitle, postContent, TO_CHAR(a.regDate, 'YYYY/MM/DD') as regDate
 			from post a, category b
-			where b.cateNo = a.cateNo and a.cateNo =#{cateNo} 
+			where b.cateNo = a.cateNo and a.cateNo =#{cateNo}
+			order by postNo desc
 		]]>
 	</select>
 	
 	<select id = "lastList" parameterType="String" resultType="com.javaex.vo.PostVo">
 		<![CDATA[
-			select p.postNo, p.cateNo, postTitle, postContent, p.regDate, u.userName
+			select p.postNo, p.cateNo, postTitle, postContent,  TO_CHAR(p.regDate, 'YYYY/MM/DD') as regDate, u.userName, c.id
 			from post p
 			join category c ON p.cateNo = c.cateNo
 			join users u ON c.id = u.id

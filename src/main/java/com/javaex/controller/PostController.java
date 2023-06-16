@@ -16,6 +16,7 @@ import com.javaex.service.PostService;
 import com.javaex.vo.CategoryVo;
 import com.javaex.vo.JsonResult;
 import com.javaex.vo.PostVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 public class PostController {
@@ -48,6 +49,18 @@ public class PostController {
 		System.out.println("PostController.list()");
 		List<PostVo> vo = postService.list(cateVo.getCateNo());
 		System.out.println(cateVo.getCateNo());
+		JsonResult jsonResult = new JsonResult();
+		jsonResult.success(vo);
+		
+		return jsonResult;
+	}
+	
+	@ResponseBody
+	@RequestMapping
+	public JsonResult lastList(@ModelAttribute UserVo userVo) {
+		System.out.println("PostController.lastList()");
+		PostVo vo = postService.LastPostVo(userVo.getId());
+		
 		JsonResult jsonResult = new JsonResult();
 		jsonResult.success(vo);
 		

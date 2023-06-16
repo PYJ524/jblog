@@ -35,7 +35,6 @@ public class BlogController {
 		model.addAttribute("uOneList", blogService.userOne(id));
 		model.addAttribute("bOneList", blogService.blogOne(id));
 		model.addAttribute("lastCateNo", cateService.LastCateNo(id));
-		model.addAttribute("lastPostVo", postService.LastPostVo(id));
 		
 		return "blog/blog-main";
 	}
