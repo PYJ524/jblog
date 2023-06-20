@@ -14,7 +14,7 @@
 				<!-- 자신의 블로그일때만 관리 메뉴가 보인다. -->
 				<c:if test="${sessionScope.uInfo != null}">
 					<c:if test="${sessionScope.uInfo.id == uOneList.id}">
-						<li><a class="btn_s" href="${pageContext.request.contextPath}/${sessionScope.uInfo.id}/admin/basic">내블로그 관리</a></li>
+						<li><a class="btn_s" href="${pageContext.request.contextPath}/${sessionScope.uInfo.id}/admin/basic">내 블로그 관리</a></li>
 					</c:if>
 					<li><a class="btn_s" href="">로그아웃</a></li>
 		 		</c:if>

@@ -55,15 +55,16 @@ public class PostController {
 		return jsonResult;
 	}
 	
-	@ResponseBody
-	@RequestMapping
-	public JsonResult lastList(@ModelAttribute UserVo userVo) {
-		System.out.println("PostController.lastList()");
-		PostVo vo = postService.LastPostVo(userVo.getId());
-		
-		JsonResult jsonResult = new JsonResult();
-		jsonResult.success(vo);
-		
-		return jsonResult;
-	}
+	
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping public JsonResult lastList(@ModelAttribute UserVo userVo) {
+	 * System.out.println("PostController.lastList()"); PostVo vo =
+	 * postService.LastPostVo(userVo.getId());
+	 * 
+	 * JsonResult jsonResult = new JsonResult(); jsonResult.success(vo);
+	 * 
+	 * return jsonResult; }
+	 */
 }

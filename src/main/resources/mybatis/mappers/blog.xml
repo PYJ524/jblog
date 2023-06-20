@@ -32,7 +32,7 @@
 			set blogtitle = #{blogTitle}
 			]]>	
 			<if test='logoFile != "" and logoFile != null' >
-			  , logofile = #{logoFile} 
+			  , logoFile = #{logoFile} 
 			</if>
 		<![CDATA[
 		    where id = #{id}

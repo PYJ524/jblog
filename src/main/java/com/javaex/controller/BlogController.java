@@ -26,9 +26,6 @@ public class BlogController {
 	@Autowired
 	private CategoryService cateService;
 	
-	@Autowired
-	private PostService postService;
-	
 	@RequestMapping(value="/{id}")
 	public String blog(@PathVariable("id") String id, Model model) {
 		System.out.println("BlogController.blog()");
